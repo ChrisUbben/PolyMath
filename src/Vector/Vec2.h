@@ -17,6 +17,8 @@
 
 // Project Headers
 
+// Defines/Macros
+
 namespace PolygonalMath
 {
     template <typename T>
@@ -32,27 +34,40 @@ namespace PolygonalMath
 
         //======================= Constructors/Destructors ====================
 
-        // default constructor
+        // Default constructor
         Vec2();
+        // Initializer list constructor
         Vec2(std::initializer_list<T> elements);
+        // Copy constructor
         Vec2(const Vec2& copy);
+        // Conversion constructor from array of elements
         explicit Vec2(const std::array<T, 2>& elements);
         ~Vec2() = default;
 
         //======================= Public Methods ==============================
 
+        // Returns dot product of this vector by rhs
         T Dot(const Vec2<T>& rhs);
+        // Scales vector components by c
         Vec2<T>& Scale(T c);
+        // Returns vector with each component scaled by c
         Vec2<T> Scaled(T c);
+        // Magnitude (length) of the vector
         float Length();
+        // Normalize vector in place
         Vec2<float>& Normalize();
+        // Returns normalized version of vector
         Vec2<float> Normalized();
 
         //======================= Public Operator Overloads ===================
+
+        // Assignment operator
         Vec2<T>& operator=(const Vec2<T>& rhs);
+        // Access components with array syntax
         T& operator[](std::size_t i);
 
         //======================= Public Properties ===========================
+
         // Euclidean components
         T& x;
         T& y;
@@ -67,45 +82,100 @@ namespace PolygonalMath
         //======================= Private Static Members ======================
 
         //======================= Private Methods =============================
-        void ZeroData();
-        void SetReferences();
 
         //======================= Private Operator Overloads ==================
 
         //======================= Private Properties ==========================
+
+        // Actual component data
         std::array<T, 2> m_data;
     };
 
-    //====================== Template Implementations =========================
+    //================ Vec2 Member Template Implementations ===================
 
-    template <typename T>
-    void PolygonalMath::Vec2<T>::SetReferences()
-    {
-        x = i = m_data[0];
-        y = j = m_data[1];
-    }
-
-    template <typename T>
-    void PolygonalMath::Vec2<T>::ZeroData()
-    {
-        m_data[0] = T(0);
-        m_data[1] = T(0);
-    }
-
+    // Returns the zero vector
     template <typename T>
     Vec2<T> PolygonalMath::Vec2<T>::Zero()
     {
         return Vec2<T>();
     }
 
+    // Default constructor
     template <typename T>
-    T& PolygonalMath::Vec2<T>::operator[](std::size_t i)
+    PolygonalMath::Vec2<T>::Vec2() : m_data({ T(0), T(0) }),
+        x(m_data[0]), y(m_data[1]),
+        i(m_data[0]), j(m_data[1])
     {
-        // Assert index not out of range
-
-        return m_data[i];
     }
 
+    // Initializer list constructor
+    template <typename T>
+    PolygonalMath::Vec2<T>::Vec2(std::initializer_list<T> elements) : m_data({ (elements.begin())[0], (elements.begin())[1] }),
+        x(m_data[0]), y(m_data[1]),
+        i(m_data[0]), j(m_data[1])
+    {
+        // Assert initializer list is correct size
+    }
+
+    // Copy constructor
+    template <typename T>
+    PolygonalMath::Vec2<T>::Vec2(const Vec2& copy) : m_data({ copy.x, copy.y }),
+        x(m_data[0]), y(m_data[1]),
+        i(m_data[0]), j(m_data[1])
+    {
+    }
+
+    // Conversion constructor from array of elements
+    template <typename T>
+    PolygonalMath::Vec2<T>::Vec2(const std::array<T, 2>& elements) : m_data({ elements[0], elements[1] }),
+        x(m_data[0]), y(m_data[1]),
+        i(m_data[0]), j(m_data[1])
+    {
+    }
+
+    // Returns dot product of this vector by rhs
+    template <typename T>
+    T PolygonalMath::Vec2<T>::Dot(const Vec2<T>& rhs)
+    {
+        return PolygonalMath::Dot(*this, rhs);
+    }
+
+    // Scales vector components by c
+    template <typename T>
+    PolygonalMath::Vec2<T>& PolygonalMath::Vec2<T>::Scale(T c)
+    {
+        return (*this) *= c;
+    }
+
+    // Returns vector with each component scaled by c
+    template <typename T>
+    PolygonalMath::Vec2<T> PolygonalMath::Vec2<T>::Scaled(T c)
+    {
+        return c * (*this);
+    }
+
+    // Magnitude (length) of the vector
+    template <typename T>
+    float PolygonalMath::Vec2<T>::Length()
+    {
+        return PolygonalMath::Length(*this);
+    }
+
+    // Normalize vector in place
+    template <typename T>
+    PolygonalMath::Vec2<float>& PolygonalMath::Vec2<T>::Normalize()
+    {
+        return PolygonalMath::Normalize(*this);
+    }
+
+    // Returns normalized version of vector
+    template <typename T>
+    PolygonalMath::Vec2<float> PolygonalMath::Vec2<T>::Normalized()
+    {
+        return PolygonalMath::Normalized(*this);
+    }
+
+    // Assignment operator
     template <typename T>
     PolygonalMath::Vec2<T>& PolygonalMath::Vec2<T>::operator=(const Vec2<T>& rhs)
     {
@@ -117,77 +187,16 @@ namespace PolygonalMath
         return *this;
     }
 
+    // Access components with array syntax
     template <typename T>
-    PolygonalMath::Vec2<float> PolygonalMath::Vec2<T>::Normalized()
+    T& PolygonalMath::Vec2<T>::operator[](std::size_t i)
     {
-        return PolygonalMath::Normalized(*this);
+        // Assert index not out of range
+
+        return m_data[i];
     }
 
-    template <typename T>
-    PolygonalMath::Vec2<float>& PolygonalMath::Vec2<T>::Normalize()
-    {
-        return PolygonalMath::Normalize(*this);
-    }
-
-    template <typename T>
-    float PolygonalMath::Vec2<T>::Length()
-    {
-        return PolygonalMath::Length(*this);
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T> PolygonalMath::Vec2<T>::Scaled(T c)
-    {
-        return c * (*this);
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T>& PolygonalMath::Vec2<T>::Scale(T c)
-    {
-        return (*this) *= c;
-    }
-
-    template <typename T>
-    T PolygonalMath::Vec2<T>::Dot(const Vec2<T>& rhs)
-    {
-        return PolygonalMath::Dot(*this, rhs);
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T>::Vec2(const std::array<T, 2>& elements)
-    {
-        SetReferences();
-
-        m_data[0] = elements[0];
-        m_data[1] = elements[1];
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T>::Vec2(const Vec2& copy)
-    {
-        SetReferences();
-
-        m_data[0] = copy[0];
-        m_data[1] = copy[1];
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T>::Vec2(std::initializer_list<T> elements)
-    {
-        // Assert initializer list is correct size
-
-        SetReferences();
-
-        m_data[0] = elements[0];
-        m_data[1] = elements[1];
-    }
-
-    template <typename T>
-    PolygonalMath::Vec2<T>::Vec2()
-    {
-        SetReferences();
-        ZeroData();
-    }
+    //====================== Template Implementations =========================
 
     // Dot product of 2D vectors
     //  Dot(v,w) = | v0 | * | w0 | = Sum(v[i] * w[i]), 0 <= i < 2
@@ -261,7 +270,7 @@ namespace PolygonalMath
     //  c * v = c * | v0 | = | c * v0 |
     //              | v1 |   | c * v1 |
     template <typename T>
-    Vec2<T>& operator*=( Vec2<T>& v, T c)
+    Vec2<T>& operator*=(Vec2<T>& v, T c)
     {
         v.x *= c;
         v.y *= c;
