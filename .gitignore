@@ -1,0 +1,7 @@
+# directories
+.vs/
+obj/
+out/
+
+# file types
+*.vcxproj.user
