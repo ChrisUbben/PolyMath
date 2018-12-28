@@ -2,6 +2,7 @@
 .vs/
 obj/
 out/
+packages/
 
 # file types
 *.vcxproj.user
