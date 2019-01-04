@@ -36,28 +36,32 @@ namespace PolygonalMath
 
         // Default constructor
         Vec2();
+        // Component wise constructor
+        Vec2(const T& x, const T& y);
         // Initializer list constructor
         Vec2(std::initializer_list<T> elements);
         // Copy constructor
         Vec2(const Vec2& copy);
         // Conversion constructor from array of elements
         explicit Vec2(const std::array<T, 2>& elements);
+
+        // Default destructor
         ~Vec2() = default;
 
         //======================= Public Methods ==============================
 
         // Returns dot product of this vector by rhs
-        T Dot(const Vec2<T>& rhs);
+        T Dot(const Vec2<T>& rhs) const;
         // Scales vector components by c
         Vec2<T>& Scale(T c);
         // Returns vector with each component scaled by c
-        Vec2<T> Scaled(T c);
+        Vec2<T> Scaled(T c) const;
         // Magnitude (length) of the vector
-        float Length();
+        float Length() const;
         // Normalize vector in place
         Vec2<float>& Normalize();
         // Returns normalized version of vector
-        Vec2<float> Normalized();
+        Vec2<float> Normalized() const;
 
         //======================= Public Operator Overloads ===================
 
@@ -65,6 +69,8 @@ namespace PolygonalMath
         Vec2<T>& operator=(const Vec2<T>& rhs);
         // Access components with array syntax
         T& operator[](std::size_t i);
+        // Access components with array syntax
+        const T& operator[](std::size_t i) const;
 
         //======================= Public Properties ===========================
 
@@ -108,6 +114,14 @@ namespace PolygonalMath
     {
     }
 
+    // Component wise constructor
+    template <typename T>
+    PolygonalMath::Vec2<T>::Vec2(const T& x, const T& y) : m_data({ T(x), T(y) }),
+        x(m_data[0]), y(m_data[1]),
+        i(m_data[0]), j(m_data[1])
+    {
+    }
+
     // Initializer list constructor
     template <typename T>
     PolygonalMath::Vec2<T>::Vec2(std::initializer_list<T> elements) : m_data({ (elements.begin())[0], (elements.begin())[1] }),
@@ -135,7 +149,7 @@ namespace PolygonalMath
 
     // Returns dot product of this vector by rhs
     template <typename T>
-    T PolygonalMath::Vec2<T>::Dot(const Vec2<T>& rhs)
+    T PolygonalMath::Vec2<T>::Dot(const Vec2<T>& rhs) const
     {
         return PolygonalMath::Dot(*this, rhs);
     }
@@ -149,14 +163,14 @@ namespace PolygonalMath
 
     // Returns vector with each component scaled by c
     template <typename T>
-    PolygonalMath::Vec2<T> PolygonalMath::Vec2<T>::Scaled(T c)
+    PolygonalMath::Vec2<T> PolygonalMath::Vec2<T>::Scaled(T c) const
     {
         return c * (*this);
     }
 
     // Magnitude (length) of the vector
     template <typename T>
-    float PolygonalMath::Vec2<T>::Length()
+    float PolygonalMath::Vec2<T>::Length() const
     {
         return PolygonalMath::Length(*this);
     }
@@ -170,7 +184,7 @@ namespace PolygonalMath
 
     // Returns normalized version of vector
     template <typename T>
-    PolygonalMath::Vec2<float> PolygonalMath::Vec2<T>::Normalized()
+    PolygonalMath::Vec2<float> PolygonalMath::Vec2<T>::Normalized() const
     {
         return PolygonalMath::Normalized(*this);
     }
@@ -190,6 +204,15 @@ namespace PolygonalMath
     // Access components with array syntax
     template <typename T>
     T& PolygonalMath::Vec2<T>::operator[](std::size_t i)
+    {
+        // Assert index not out of range
+
+        return m_data[i];
+    }
+
+    // Access components with array syntax
+    template <typename T>
+    const T& PolygonalMath::Vec2<T>::operator[](std::size_t i) const
     {
         // Assert index not out of range
 
@@ -327,6 +350,17 @@ namespace PolygonalMath
     {
         return Vec2<T>({ (-v.x),
                          (-v.y) });
+    }
+
+    // 2D vector equal
+    template <typename T>
+    bool operator==(const Vec2<T>& lhs, const Vec2<T>& rhs)
+    {
+        if (&lhs == &rhs)
+            return true;
+
+        //else
+        return lhs[0] == rhs[0] && lhs[1] == rhs[1];
     }
 }
 
