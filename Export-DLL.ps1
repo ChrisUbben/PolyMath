@@ -31,8 +31,10 @@ $ExcludedFiles = @(
     # 'targetver.h'
 )
 
-$HeaderFiles = Get-ChildItem "$ProjectDir*.h" -Recurse | Where-Object {$ExcludedFiles -notcontains $_.Name}
-$HeaderFiles | Copy-Item -Destination "$OutputPath"
+# $HeaderFiles = Get-ChildItem "$ProjectDir*.h" -Recurse | Where-Object {$ExcludedFiles -notcontains $_.Name}
+# $HeaderFiles | Copy-Item -Destination "$OutputPath"
+
+Copy-Item -Path "$ProjectDir" -Destination "$OutputPath..\" -Filter "*.h" -Exclude $ExcludedFiles -Recurse -Container -Force
 
 # # Collect all source files
 # $SourceFiles = Get-ChildItem -Recurse | Where-Object {$_.Name -like "*.cpp" -or $_.Name -like "*.h"}

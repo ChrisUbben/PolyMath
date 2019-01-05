@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Filename: Float.cpp
+// Filename: PolyDouble.cpp
 // Project: PolygonalMath
 // Author: Chris Ubben
 // Creation Date: 2019/01/05
@@ -13,15 +13,13 @@
 // Library Headers
 
 // Project Headers
-#include "PolyFloat.h"
+#include "PolyDouble.h"
 
 namespace PolygonalMath
 {
-    namespace Float
+
+    bool Double::Equals(double a, double b, double epsilon /*= Epsilon*/)
     {
-        bool Equals(float a, float b, float epsilon /*= Epsilon*/)
-        {
-            return std::fabs(a - b) <= epsilon;
-        }
+        return std::abs(a - b) <= epsilon;
     }
 }

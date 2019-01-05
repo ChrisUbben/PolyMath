@@ -9,9 +9,10 @@
 #define POLYGONALMATH_POLYGONALMATH_H
 
 // Vector
-#include "Vec2.h"
+#include "Vector\Vec2.h"
 
 // Math
-#include "PolyFloat.h"
+#include "Math\PolyFloat.h"
+#include "Math\PolyDouble.h"
 
 #endif

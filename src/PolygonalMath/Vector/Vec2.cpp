@@ -40,4 +40,26 @@ namespace PolygonalMath
         return Vec2<float>({ (v.x / len),
                              (v.y / len) });
     }
+
+    // 2D vector equal
+    template <>
+    bool operator==(const Vec2<float>& lhs, const Vec2<float>& rhs)
+    {
+        if (&lhs == &rhs)
+            return true;
+
+        //else
+        return Float::Equals(lhs[0], rhs[0]) && Float::Equals(lhs[1], rhs[1]);
+    }
+
+    // 2D vector equal
+    template <>
+    bool operator==(const Vec2<double>& lhs, const Vec2<double>& rhs)
+    {
+        if (&lhs == &rhs)
+            return true;
+
+        //else
+        return Double::Equals(lhs[0], rhs[0]) && Double::Equals(lhs[1], rhs[1]);
+    }
 }

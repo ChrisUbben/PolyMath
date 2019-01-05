@@ -1,9 +1,12 @@
 //-----------------------------------------------------------------------------
-// Filename: Float.cpp
+// Filename: PolyDouble.h
 // Project: PolygonalMath
 // Author: Chris Ubben
 // Creation Date: 2019/01/05
 //-----------------------------------------------------------------------------
+
+#ifndef POLYGONALMATH_POLYDOUBLE_H
+#define POLYGONALMATH_POLYDOUBLE_H
 
 // Precompiled Headers
 #include "stdafx.h"
@@ -13,15 +16,17 @@
 // Library Headers
 
 // Project Headers
-#include "PolyFloat.h"
+
+// Defines/Macros
 
 namespace PolygonalMath
 {
-    namespace Float
+    namespace Double
     {
-        bool Equals(float a, float b, float epsilon /*= Epsilon*/)
-        {
-            return std::fabs(a - b) <= epsilon;
-        }
+        constexpr double Epsilon = 0.0000000000000001;
+
+        bool Equals(double a, double b, double epsilon = Epsilon);
     }
 }
+
+#endif

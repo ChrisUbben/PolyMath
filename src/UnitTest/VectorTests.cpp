@@ -17,8 +17,8 @@ using namespace PolygonalMath;
 TEST(Vec2Tests, Vec2FloatZeroTest)
 {
     Vec2<float> zeroVec = Vec2<float>::Zero();
-    EXPECT_EQ(zeroVec.x, 0.0f);
-    EXPECT_EQ(zeroVec.y, 0.0f);
+    EXPECT_TRUE(Float::Equals(zeroVec.x, 0.0f));
+    EXPECT_TRUE(Float::Equals(zeroVec.y, 0.0f));
 }
 
 #pragma endregion StaticMemberTests
@@ -28,30 +28,30 @@ TEST(Vec2Tests, Vec2FloatZeroTest)
 TEST(Vec2Tests, Vec2FloatDefaultConstructorTest)
 {
     Vec2<float> v = Vec2<float>();
-    EXPECT_EQ(v.x, 0.0f);
-    EXPECT_EQ(v.y, 0.0f);
+    EXPECT_TRUE(Float::Equals(v.x, 0.0f));
+    EXPECT_TRUE(Float::Equals(v.y, 0.0f));
 }
 
 TEST(Vec2Tests, Vec2FloatComponentConstructorTest)
 {
     Vec2<float> v = Vec2<float>(1.0f, 2.0f);
-    EXPECT_EQ(v.x, 1.0f);
-    EXPECT_EQ(v.y, 2.0f);
+    EXPECT_TRUE(Float::Equals(v.x, 1.0f));
+    EXPECT_TRUE(Float::Equals(v.y, 2.0f));
 }
 
 TEST(Vec2Tests, Vec2FloatInitializerListConstructorTest)
 {
     Vec2<float> v{ 1.0f, 2.0f };
-    EXPECT_EQ(v.x, 1.0f);
-    EXPECT_EQ(v.y, 2.0f);
+    EXPECT_TRUE(Float::Equals(v.x, 1.0f));
+    EXPECT_TRUE(Float::Equals(v.y, 2.0f));
 }
 
 TEST(Vec2Tests, Vec2FloatCopyConstructorTest)
 {
     Vec2<float> v = Vec2<float>(1.0f, 2.0f);
     Vec2<float> v_copy = Vec2<float>(v);
-    EXPECT_EQ(v_copy.x, 1.0f);
-    EXPECT_EQ(v_copy.y, 2.0f);
+    EXPECT_TRUE(Float::Equals(v_copy.x, 1.0f));
+    EXPECT_TRUE(Float::Equals(v_copy.y, 2.0f));
     EXPECT_EQ(v, v_copy);
 }
 
@@ -59,8 +59,8 @@ TEST(Vec2Tests, Vec2FloatConversionConstructorTest)
 {
     std::array<float, 2> a{ 1.0f, 2.0f };
     Vec2<float> v = Vec2<float>(a);
-    EXPECT_EQ(v.x, 1.0f);
-    EXPECT_EQ(v.y, 2.0f);
+    EXPECT_TRUE(Float::Equals(v.x, 1.0f));
+    EXPECT_TRUE(Float::Equals(v.y, 2.0f));
 }
 
 #pragma endregion ConstructorTests
@@ -75,7 +75,7 @@ TEST(Vec2Tests, Vec2FloatDotProductPositiveTest)
     float dot = v1.Dot(v2);
     float expected = std::sqrt(2.0f) / 2.0f;
 
-    EXPECT_EQ(dot, expected);
+    EXPECT_TRUE(Float::Equals(dot, expected));
 }
 
 TEST(Vec2Tests, Vec2FloatDotProductNegativeTest)
@@ -86,7 +86,7 @@ TEST(Vec2Tests, Vec2FloatDotProductNegativeTest)
     float dot = v1.Dot(v2);
     float expected = -1.0f * (std::sqrt(2.0f) / 2.0f);
 
-    EXPECT_EQ(dot, expected);
+    EXPECT_TRUE(Float::Equals(dot, expected));
 }
 
 TEST(Vec2Tests, Vec2FloatDotPerpendicularTest)
@@ -94,7 +94,7 @@ TEST(Vec2Tests, Vec2FloatDotPerpendicularTest)
     Vec2<float> v1{ 1.0f, 0.0f };
     Vec2<float> v2{ 0.0f, 1.0f };
     float dot = v1.Dot(v2);
-    EXPECT_EQ(dot, 0.0f);
+    EXPECT_TRUE(Float::Equals(dot, 0.0f));
 }
 
 TEST(Vec2Tests, Vec2FloatDotParallelTest)
@@ -102,7 +102,7 @@ TEST(Vec2Tests, Vec2FloatDotParallelTest)
     Vec2<float> v1{ 1.0f, 0.0f };
     Vec2<float> v2{ 1.0f, 0.0f };
     float dot = v1.Dot(v2);
-    EXPECT_EQ(dot, 1.0f);
+    EXPECT_TRUE(Float::Equals(dot, 1.0f));
 }
 
 TEST(Vec2Tests, Vec2FloatDot180DegreeTest)
@@ -110,7 +110,15 @@ TEST(Vec2Tests, Vec2FloatDot180DegreeTest)
     Vec2<float> v1{ 1.0f, 0.0f };
     Vec2<float> v2{ -1.0f, 0.0f };
     float dot = v1.Dot(v2);
-    EXPECT_EQ(dot, -1.0f);
+    EXPECT_TRUE(Float::Equals(dot, -1.0f));
+}
+
+TEST(Vec2Tests, Vec2ScaleZeroTest)
+{
+    Vec2<float> v{ 1.0f, 2.0f };
+    v.Scale(0.0f);
+    EXPECT_TRUE(Float::Equals(v.x, 0.0f));
+    EXPECT_TRUE(Float::Equals(v.y, 0.0f));
 }
 
 #pragma endregion MemberMethodTests

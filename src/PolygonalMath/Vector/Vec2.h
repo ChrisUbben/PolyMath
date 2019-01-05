@@ -16,6 +16,8 @@
 // Library Headers
 
 // Project Headers
+#include "Math\PolyFloat.h"
+#include "Math\PolyDouble.h"
 
 // Defines/Macros
 
@@ -216,20 +218,20 @@ namespace PolygonalMath
 
     // Access components with array syntax
     template <typename T>
-    T& PolygonalMath::Vec2<T>::operator[](std::size_t i)
+    T& PolygonalMath::Vec2<T>::operator[](std::size_t index)
     {
         // Assert index not out of range
 
-        return m_data[i];
+        return m_data[index];
     }
 
     // Access components with array syntax
     template <typename T>
-    const T& PolygonalMath::Vec2<T>::operator[](std::size_t i) const
+    const T& PolygonalMath::Vec2<T>::operator[](std::size_t index) const
     {
         // Assert index not out of range
 
-        return m_data[i];
+        return m_data[index];
     }
 
     //====================== Template Implementations =========================
@@ -352,5 +354,11 @@ namespace PolygonalMath
         //else
         return lhs[0] == rhs[0] && lhs[1] == rhs[1];
     }
+
+    // 2D vector equal
+    template <>
+    bool operator==(const Vec2<float>& lhs, const Vec2<float>& rhs);
+    template <>
+    bool operator==(const Vec2<double>& lhs, const Vec2<double>& rhs);
 }
 #endif
