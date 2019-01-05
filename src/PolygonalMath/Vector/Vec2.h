@@ -21,6 +21,8 @@
 
 namespace PolygonalMath
 {
+    //====================== Class Declarations =========================
+
     template <typename T>
     class Vec2
     {
@@ -96,6 +98,17 @@ namespace PolygonalMath
         // Actual component data
         std::array<T, 2> m_data;
     };
+
+    //====================== Function Declarations =========================
+
+    // Magnitude (length) of the vector
+    float Length(const Vec2<float>& v);
+
+    // Normalize vector in place
+    Vec2<float>& Normalize(Vec2<float>& v);
+
+    // Returns normalized version of vector
+    Vec2<float> Normalized(const Vec2<float>& v);
 
     //================ Vec2 Member Template Implementations ===================
 
@@ -230,29 +243,6 @@ namespace PolygonalMath
         return (lhs.x * rhs.x) + (lhs.y * rhs.y);
     }
 
-    // Magnitude (length) of the vector
-    float Length(const Vec2<float>& v)
-    {
-        return std::sqrt(Dot(v, v));
-    }
-
-    // Normalize vector in place
-    Vec2<float>& Normalize(Vec2<float>& v)
-    {
-        float len = Length(v);
-        v.x = v.x / len;
-        v.y = v.y / len;
-        return v;
-    }
-
-    // Returns normalized version of vector
-    Vec2<float> Normalized(const Vec2<float>& v)
-    {
-        float len = Length(v);
-        return Vec2<float>({ (v.x / len),
-                             (v.y / len) });
-    }
-
     // 2D component wise vector multiplication
     //  v * w = | v0 | * | w0 | = | v0 * w0 |
     //          | v1 |   | w0 |   | v1 * w1 |
@@ -363,5 +353,4 @@ namespace PolygonalMath
         return lhs[0] == rhs[0] && lhs[1] == rhs[1];
     }
 }
-
 #endif

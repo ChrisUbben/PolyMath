@@ -11,4 +11,7 @@
 // Vector
 #include "Vec2.h"
 
+// Math
+#include "PolyFloat.h"
+
 #endif

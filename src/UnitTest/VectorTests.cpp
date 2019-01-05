@@ -13,46 +13,106 @@ using namespace PolygonalMath;
 #pragma region Vec2Tests
 
 #pragma region StaticMemberTests
-TEST(Vec2Tests, Vec2IntZeroTest) {
-    Vec2<int> zeroVec = Vec2<int>::Zero();
-    EXPECT_EQ(zeroVec.x, 0);
-    EXPECT_EQ(zeroVec.y, 0);
+
+TEST(Vec2Tests, Vec2FloatZeroTest)
+{
+    Vec2<float> zeroVec = Vec2<float>::Zero();
+    EXPECT_EQ(zeroVec.x, 0.0f);
+    EXPECT_EQ(zeroVec.y, 0.0f);
 }
+
 #pragma endregion StaticMemberTests
 
 #pragma region ConstructorTests
-TEST(Vec2Tests, Vec2IntDefaultConstructorTest) {
-    Vec2<int> v1 = Vec2<int>();
-    EXPECT_EQ(v1.x, 0);
-    EXPECT_EQ(v1.y, 0);
+
+TEST(Vec2Tests, Vec2FloatDefaultConstructorTest)
+{
+    Vec2<float> v = Vec2<float>();
+    EXPECT_EQ(v.x, 0.0f);
+    EXPECT_EQ(v.y, 0.0f);
 }
 
-TEST(Vec2Tests, Vec2IntComponentConstructorTest) {
-    Vec2<int> v2 = Vec2<int>(1, 2);
-    EXPECT_EQ(v2.x, 1);
-    EXPECT_EQ(v2.y, 2);
+TEST(Vec2Tests, Vec2FloatComponentConstructorTest)
+{
+    Vec2<float> v = Vec2<float>(1.0f, 2.0f);
+    EXPECT_EQ(v.x, 1.0f);
+    EXPECT_EQ(v.y, 2.0f);
 }
 
-TEST(Vec2Tests, Vec2IntInitializerListConstructorTest) {
-    Vec2<int> v3{ 1, 2 };
-    EXPECT_EQ(v3.x, 1);
-    EXPECT_EQ(v3.y, 2);
+TEST(Vec2Tests, Vec2FloatInitializerListConstructorTest)
+{
+    Vec2<float> v{ 1.0f, 2.0f };
+    EXPECT_EQ(v.x, 1.0f);
+    EXPECT_EQ(v.y, 2.0f);
 }
 
-TEST(Vec2Tests, Vec2IntCopyConstructorTest) {
-    Vec2<int> v4 = Vec2<int>(1, 2);
-    Vec2<int> v4_copy = Vec2<int>(v4);
-    EXPECT_EQ(v4_copy.x, 1);
-    EXPECT_EQ(v4_copy.y, 2);
-    EXPECT_EQ(v4, v4_copy);
+TEST(Vec2Tests, Vec2FloatCopyConstructorTest)
+{
+    Vec2<float> v = Vec2<float>(1.0f, 2.0f);
+    Vec2<float> v_copy = Vec2<float>(v);
+    EXPECT_EQ(v_copy.x, 1.0f);
+    EXPECT_EQ(v_copy.y, 2.0f);
+    EXPECT_EQ(v, v_copy);
 }
 
-TEST(Vec2Tests, Vec2IntConversionConstructorTest) {
-    std::array<int, 2> a1{ 1, 2 };
-    Vec2<int> v5 = Vec2<int>(a1);
-    EXPECT_EQ(v5.x, 1);
-    EXPECT_EQ(v5.y, 2);
+TEST(Vec2Tests, Vec2FloatConversionConstructorTest)
+{
+    std::array<float, 2> a{ 1.0f, 2.0f };
+    Vec2<float> v = Vec2<float>(a);
+    EXPECT_EQ(v.x, 1.0f);
+    EXPECT_EQ(v.y, 2.0f);
 }
+
 #pragma endregion ConstructorTests
+
+#pragma region MemberMethodTests
+
+TEST(Vec2Tests, Vec2FloatDotProductPositiveTest)
+{
+    Vec2<float> v1 = Normalized(Vec2<float>{ 1.0f, 1.0f });
+    Vec2<float> v2{ 0.0f, 1.0f };
+
+    float dot = v1.Dot(v2);
+    float expected = std::sqrt(2.0f) / 2.0f;
+
+    EXPECT_EQ(dot, expected);
+}
+
+TEST(Vec2Tests, Vec2FloatDotProductNegativeTest)
+{
+    Vec2<float> v1 = Normalized(Vec2<float>{ -1.0f, 1.0f });
+    Vec2<float> v2{ 1.0f, 0.0f };
+
+    float dot = v1.Dot(v2);
+    float expected = -1.0f * (std::sqrt(2.0f) / 2.0f);
+
+    EXPECT_EQ(dot, expected);
+}
+
+TEST(Vec2Tests, Vec2FloatDotPerpendicularTest)
+{
+    Vec2<float> v1{ 1.0f, 0.0f };
+    Vec2<float> v2{ 0.0f, 1.0f };
+    float dot = v1.Dot(v2);
+    EXPECT_EQ(dot, 0.0f);
+}
+
+TEST(Vec2Tests, Vec2FloatDotParallelTest)
+{
+    Vec2<float> v1{ 1.0f, 0.0f };
+    Vec2<float> v2{ 1.0f, 0.0f };
+    float dot = v1.Dot(v2);
+    EXPECT_EQ(dot, 1.0f);
+}
+
+TEST(Vec2Tests, Vec2FloatDot180DegreeTest)
+{
+    Vec2<float> v1{ 1.0f, 0.0f };
+    Vec2<float> v2{ -1.0f, 0.0f };
+    float dot = v1.Dot(v2);
+    EXPECT_EQ(dot, -1.0f);
+}
+
+#pragma endregion MemberMethodTests
 
 #pragma endregion Vec2Tests
