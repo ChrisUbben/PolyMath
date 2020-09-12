@@ -16,7 +16,7 @@
 // Library Headers
 
 // Project Headers
-#include "Math\PolyFloat.h"
+#include "PolyFloat.h"
 
 // Defines/Macros
 

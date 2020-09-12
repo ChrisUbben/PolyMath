@@ -19,55 +19,56 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Math\PolyDouble.cpp" />
-    <ClCompile Include="Math\PolyFloat.cpp" />
+    <ClCompile Include="PolyDouble.cpp" />
+    <ClCompile Include="PolyFloat.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Vector\Vec2.cpp" />
+    <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Math\PolyDouble.h" />
-    <ClInclude Include="Math\PolyFloat.h" />
-    <ClInclude Include="PolygonalMath.h" />
+    <ClInclude Include="PolyDouble.h" />
+    <ClInclude Include="PolyFloat.h" />
+    <ClInclude Include="PolyMath.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Vector\Vec2.h" />
+    <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3320EEFD-A323-433B-A2E9-60D188C5E6B7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>PolygonalMath</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PolyMath</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -123,7 +124,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -NoProfile -Command "&amp; '$(SolutionDir)Export-DLL.ps1' -ProjectDir '$(ProjectDir)' -OutputPath '$(OutputPath)'"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(SolutionDir)Export-DLL.ps1 $(ProjectDir) $(OutDir)</Command>
       <Message>Exporting header files to out folder...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -141,7 +142,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -NoProfile -Command "&amp; '$(SolutionDir)Export-DLL.ps1' -ProjectDir '$(ProjectDir)' -OutputPath '$(OutputPath)'"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(SolutionDir)Export-DLL.ps1 $(ProjectDir) $(OutDir)</Command>
       <Message>Exporting header files to out folder...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -163,7 +164,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -NoProfile -Command "&amp; '$(SolutionDir)Export-DLL.ps1' -ProjectDir '$(ProjectDir)' -OutputPath '$(OutputPath)'"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(SolutionDir)Export-DLL.ps1 $(ProjectDir) $(OutDir)</Command>
       <Message>Exporting header files to out folder...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -185,7 +186,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>powershell.exe -NoProfile -Command "&amp; '$(SolutionDir)Export-DLL.ps1' -ProjectDir '$(ProjectDir)' -OutputPath '$(OutputPath)'"</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(SolutionDir)Export-DLL.ps1 $(ProjectDir) $(OutDir)</Command>
       <Message>Exporting header files to out folder...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
