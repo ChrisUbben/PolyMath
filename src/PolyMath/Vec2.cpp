@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // Filename: Vec2.cpp
-// Project: PolygonalMath
+// Project: PolyMath
 // Author: Chris Ubben
 // Creation Date: 2018/09/01
 //-----------------------------------------------------------------------------
@@ -16,32 +16,32 @@
 #include "Vec2.h"
 #include <iostream>
 
-namespace PolygonalMath
+namespace PolyMath
 {
     //================ Vec2 Member Implementations ===================
 
     // Returns the zero vector
-    Vec2 PolygonalMath::Vec2::Zero()
+    Vec2 PolyMath::Vec2::Zero()
     {
         return Vec2();
     }
 
     // Default constructor
-    PolygonalMath::Vec2::Vec2() : m_data({ 0.0f, 0.0f }),
+    PolyMath::Vec2::Vec2() : m_data({ 0.0f, 0.0f }),
         x(m_data[0]), y(m_data[1]),
         i(m_data[0]), j(m_data[1])
     {
     }
 
     // Component wise constructor
-    PolygonalMath::Vec2::Vec2(float x, float y) : m_data({ x, y }),
+    PolyMath::Vec2::Vec2(float x, float y) : m_data({ x, y }),
         x(m_data[0]), y(m_data[1]),
         i(m_data[0]), j(m_data[1])
     {
     }
 
     // Initializer list constructor
-    PolygonalMath::Vec2::Vec2(std::initializer_list<float> elements) : m_data({ (elements.begin())[0], (elements.begin())[1] }),
+    PolyMath::Vec2::Vec2(std::initializer_list<float> elements) : m_data({ (elements.begin())[0], (elements.begin())[1] }),
         x(m_data[0]), y(m_data[1]),
         i(m_data[0]), j(m_data[1])
     {
@@ -49,57 +49,57 @@ namespace PolygonalMath
     }
 
     // Copy constructor
-    PolygonalMath::Vec2::Vec2(const Vec2& copy) : m_data({ copy.x, copy.y }),
+    PolyMath::Vec2::Vec2(const Vec2& copy) : m_data({ copy.x, copy.y }),
         x(m_data[0]), y(m_data[1]),
         i(m_data[0]), j(m_data[1])
     {
     }
 
     // Conversion constructor from array of elements
-    PolygonalMath::Vec2::Vec2(const std::array<float, 2>& elements) : m_data({ elements[0], elements[1] }),
+    PolyMath::Vec2::Vec2(const std::array<float, 2>& elements) : m_data({ elements[0], elements[1] }),
         x(m_data[0]), y(m_data[1]),
         i(m_data[0]), j(m_data[1])
     {
     }
 
     // Returns dot product of this vector by rhs
-    float PolygonalMath::Vec2::Dot(const Vec2& rhs) const
+    float PolyMath::Vec2::Dot(const Vec2& rhs) const
     {
-        return PolygonalMath::Dot(*this, rhs);
+        return PolyMath::Dot(*this, rhs);
     }
 
     // Scales vector components by c
-    PolygonalMath::Vec2& PolygonalMath::Vec2::Scale(float c)
+    PolyMath::Vec2& PolyMath::Vec2::Scale(float c)
     {
         return (*this) *= c;
     }
 
     // Returns vector with each component scaled by c
-    PolygonalMath::Vec2 PolygonalMath::Vec2::Scaled(float c) const
+    PolyMath::Vec2 PolyMath::Vec2::Scaled(float c) const
     {
         return c * (*this);
     }
 
     // Magnitude (length) of the vector
-    float PolygonalMath::Vec2::Length() const
+    float PolyMath::Vec2::Length() const
     {
-        return PolygonalMath::Length(*this);
+        return PolyMath::Length(*this);
     }
 
     // Normalize vector in place
-    PolygonalMath::Vec2& PolygonalMath::Vec2::Normalize()
+    PolyMath::Vec2& PolyMath::Vec2::Normalize()
     {
-        return PolygonalMath::Normalize(*this);
+        return PolyMath::Normalize(*this);
     }
 
     // Returns normalized version of vector
-    PolygonalMath::Vec2 PolygonalMath::Vec2::Normalized() const
+    PolyMath::Vec2 PolyMath::Vec2::Normalized() const
     {
-        return PolygonalMath::Normalized(*this);
+        return PolyMath::Normalized(*this);
     }
 
     // Assignment operator
-    PolygonalMath::Vec2& PolygonalMath::Vec2::operator=(const Vec2& rhs)
+    PolyMath::Vec2& PolyMath::Vec2::operator=(const Vec2& rhs)
     {
         if (this == &rhs)
             return (*this);
@@ -110,7 +110,7 @@ namespace PolygonalMath
     }
 
     // Access components with array syntax
-    float& PolygonalMath::Vec2::operator[](std::size_t index)
+    float& PolyMath::Vec2::operator[](std::size_t index)
     {
         // Assert index not out of range
 
@@ -118,7 +118,7 @@ namespace PolygonalMath
     }
 
     // Access components with array syntax
-    float PolygonalMath::Vec2::operator[](std::size_t index) const
+    float PolyMath::Vec2::operator[](std::size_t index) const
     {
         // Assert index not out of range
 

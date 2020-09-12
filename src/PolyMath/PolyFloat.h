@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------
 // Filename: Float.h
-// Project: PolygonalMath
+// Project: PolyMath
 // Author: Chris Ubben
 // Creation Date: 2019/01/05
 //-----------------------------------------------------------------------------
 
-#ifndef POLYGONALMATH_FLOAT_H
-#define POLYGONALMATH_FLOAT_H
+#ifndef POLYMATH_FLOAT_H
+#define POLYMATH_FLOAT_H
 
 // Precompiled Headers
 #include "stdafx.h"
@@ -19,7 +19,7 @@
 
 // Defines/Macros
 
-namespace PolygonalMath
+namespace PolyMath
 {
     namespace Float
     {

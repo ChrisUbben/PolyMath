@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // Filename: Float.cpp
-// Project: PolygonalMath
+// Project: PolyMath
 // Author: Chris Ubben
 // Creation Date: 2019/01/05
 //-----------------------------------------------------------------------------
@@ -15,7 +15,7 @@
 // Project Headers
 #include "PolyFloat.h"
 
-namespace PolygonalMath
+namespace PolyMath
 {
     namespace Float
     {

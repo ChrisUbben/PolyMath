@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "src\UnitTest\UnitTest.vcxproj", "{EC6144CF-AF45-4886-B0CF-55C56F9D2790}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3320EEFD-A323-433B-A2E9-60D188C5E6B7} = {3320EEFD-A323-433B-A2E9-60D188C5E6B7}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolyMath", "src\PolyMath\PolyMath.vcxproj", "{3320EEFD-A323-433B-A2E9-60D188C5E6B7}"
 EndProject

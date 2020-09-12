@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------
 // Filename: Vec2.h
-// Project: PolygonalMath
+// Project: PolyMath
 // Author: Chris Ubben
 // Creation Date: 2018/09/01
 //-----------------------------------------------------------------------------
 
-#ifndef POLYGONALMATH_VEC2_H
-#define POLYGONALMATH_VEC2_H
+#ifndef POLYMATH_VEC2_H
+#define POLYMATH_VEC2_H
 
 // Precompiled Headers
 #include "stdafx.h"
@@ -20,7 +20,7 @@
 
 // Defines/Macros
 
-namespace PolygonalMath
+namespace PolyMath
 {
     //====================== Class Declarations =========================
 

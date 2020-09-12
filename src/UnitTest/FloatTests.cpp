@@ -6,9 +6,9 @@
 //-----------------------------------------------------------------------------
 
 // Precompiled Headers
-#include "pch.h"
+#include "stdafx.h"
 
-using namespace PolygonalMath;
+using namespace PolyMath;
 
 #pragma region FloatTests
 

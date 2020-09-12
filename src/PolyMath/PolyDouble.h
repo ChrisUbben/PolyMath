@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------
 // Filename: PolyDouble.h
-// Project: PolygonalMath
+// Project: PolyMath
 // Author: Chris Ubben
 // Creation Date: 2019/01/05
 //-----------------------------------------------------------------------------
 
-#ifndef POLYGONALMATH_POLYDOUBLE_H
-#define POLYGONALMATH_POLYDOUBLE_H
+#ifndef POLYMATH_POLYDOUBLE_H
+#define POLYMATH_POLYDOUBLE_H
 
 // Precompiled Headers
 #include "stdafx.h"
@@ -19,7 +19,7 @@
 
 // Defines/Macros
 
-namespace PolygonalMath
+namespace PolyMath
 {
     namespace Double
     {
